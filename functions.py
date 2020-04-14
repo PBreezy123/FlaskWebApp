@@ -2,7 +2,7 @@ def GetAnimals(p_number):
     Dogs = 0
     Cats = 0
     Mice = 0
-    for i in range(1, 100):
+    for i in range(1, p_number):
         prime = True
         for p in range(2,(i - 1)):
             if (i % p) == 0:

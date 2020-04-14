@@ -1,13 +1,19 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title>Cats, Mice and Dogs</title>
-  </head>
-  <body>
-    <p> There is {% print(dog) %} dogs! </p>
-    {% for i in range (dog)%}
-<img src="{{url_for('static', filename='dogg.jpg')}}" height="100" width = "100" />
-    {% endfor %}
-  </body>
-</html>
+{% extends "layout.html" %}
+{% block content %}
+
+<p> There is {% print(dogs) %} dogs! </p>
+{% for i in range (dogs) %}
+<img src="{{url_for('static', filename='dog.jpg')}}" height="100" width = "100"/>
+{% endfor %}
+
+<p> There is {% print(cats) %} cats! </p>
+{% for i in range (cats) %}
+<img src="{{url_for('static', filename='cat.jpg')}}" height="100" width = "100"/>
+{% endfor %}
+
+<p> There is {% print(mice) %} mice! </p>
+{% for i in range (mice) %}
+<img src="{{url_for('static', filename='mouse.jpg')}}" height="100" width = "100"/>
+{% endfor %}
+
+{% endblock %}

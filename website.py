@@ -10,9 +10,16 @@ def home():
 @app.route("/results", methods = ['POST'])
 def results():
     if request.method == 'POST':
-        number = int(request.form['numberToCheck']) #request.form is a dictionary. 'numberToCheck' is the value, for which we extract the key. we then convert the key from a string to an int
+        #Try catch to see if its a number and not empty and has no special characters
+        try:
+            number = int(request.form['numberToCheck']) #request.form is a dictionary. 'numberToCheck' is the value, for which we extract the key. we then convert the key from a string to an int
+        except:
+            return render_template('home.html') #Keep them at the current page
+        if number < 50 or number > 200:
+            return render_template('home.html')
         dogs, cats, mice = egg.GetAnimals(number)
         return render_template("results.html", dogs=dogs, cats=cats, mice=mice)
+
 
 
 # This condition allows changes to be reflected in the web page automatically
